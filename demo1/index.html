@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	
+		
+	<script>	
+		window.onload=function(){
+		  initProvince();
+		  document.getElementById("city").style.display="none";
+		}
+		
+					
+		function initProvince(){
+			
+		   var province=document.getElementById("province");
+		   var opt01 = new Option("四川省","101");
+		   var opt02 = new Option("河北省","102");
+		   
+		   province.add(opt01);
+		   province.add(opt02);
+		   
+		   province.onchange=function(){
+		   	  console.log(province.value);
+		      initCity(province.value); 
+		   }
+		   
+		}
+			
+		function initCity(provinceKey){
+			var city=document.getElementById("city");
+			city.style.display = "block";
+			city.options.length = 0;
+			switch(parseInt(provinceKey)){
+				case -1:
+				city.style.display="none";
+				break;
+				case 101:
+				city.add(new Option("--请选择--","101-00"));
+				city.add(new Option("成都市","101-01"));
+				city.add(new Option("自贡市","101-02"));
+				break;
+				case 102:
+				city.add(new Option("--请选择--","102-00"));
+				city.add(new Option("石家庄市","102-01"));
+				city.add(new Option("秦皇岛市","102-02"));
+				break;
+			}
+			
+		}
+			
+    </script>	
+	<body>
+	      <table>
+	         <tr>
+	             <td>
+	                   <select id="province">
+	                      <option value="-1">
+	                      	--请选择--
+	                      </option>
+	                   </select>
+	             </td>
+	             <td>
+	             	    <select id="city">
+	             	    	
+	             	    </select>
+	             </td>
+	         </tr>
+	      
+	      </table>
+	
+	 
+	</body>
+</html>
